@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>LogIn</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+</head>
+<header class="fixed1">
+	<ul id="dropdown1" class="dropdown-content">
+	<%if current_user%>
+	  <li><a href="/users/<%= current_user.id %>">Home</a></li>
+	  <li><a href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
+	<%end%>
+	  <li class="divider"></li>
+	  <li><a href="#!">three</a></li>
+	</ul>
+	<nav>
+	  <div class="nav-wrapper teal lighten-2 push1">
+	  	<% if current_user %>
+	    <a href="/users/<%= current_user.id %>" class="brand-logo logito">Logo</a>
+	    <%else%>
+	    <a href="/sessions/login" class="brand-logo logito">Logo</a>
+	    <%end%>
+	    <ul class="right hide-on-med-and-down">
+	     <!-- Dropdown Trigger -->
+	      	<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
+	      	<% if current_user %>
+	     	<li><form method="post" action="/sessions/logout">
+	       	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">	
+			<input type="hidden" name="_method" value="delete">
+			<button type="submit" class="btn waves-effect waves-light button out" >Log out</button>
+	     	 </form></li>
+	       	<%else%>
+	       	<li><a class="btn waves-effect waves-light" href="/sessions/login">Log In</a></li>
+	      <%end%>
+	    </ul>
+	  </div>
+	</nav>
+</header>
+<body>
+	<div class="container">
+	<%= yield %>
+	</div>
+</body>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+</html>

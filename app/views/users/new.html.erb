@@ -1,0 +1,81 @@
+
+<div class="center1">
+<h3 class="center-align">Please Register</h3>
+	<% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<p class="error"> * <%=error%></p>
+		<% end %>
+	<% end %>
+<div>
+	<form action="/users/register" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<label for="first_name">First Name</label>
+		<input id="First Name" type="text" name="user[first_name]">
+		<label for="Last Name">Last Name</label>
+		<input id="last Name" type="text" name="user[last_name]">
+		<label for="City">City</label>
+		<input id="City" type="text" name="user[city]">
+		<select name="user[state]" id="states" class="browser-default">
+						<option selected hidden>Select State</option>
+						<option value="AK">AK</option>
+						<option value="AL">AL</option>
+						<option value="AR">AR</option>
+						<option value="AZ">AZ</option>
+						<option value="CA">CA</option>
+						<option value="CO">CO</option>
+						<option value="CT">CT</option>
+						<option value="DE">DE</option>
+						<option value="FL">FL</option>
+						<option value="GA">GA</option>
+						<option value="HI">HI</option>
+						<option value="ID">ID</option>
+						<option value="IL">IL</option>
+						<option value="IN">IN</option>
+						<option value="IA">IA</option>
+						<option value="KS">KS</option>
+						<option value="KY">KY</option>
+						<option value="LA">LA</option>
+						<option value="ME">ME</option>
+						<option value="MD">MD</option>
+						<option value="MA">MA</option>
+						<option value="MI">MI</option>
+						<option value="MN">MN</option>
+						<option value="MS">MS</option>
+						<option value="MO">MO</option>
+						<option value="MT">MT</option>
+						<option value="NE">NE</option>
+						<option value="NV">NV</option>
+						<option value="NH">NH</option>
+						<option value="NJ">NJ</option>
+						<option value="NM">NM</option>
+						<option value="NY">NY</option>
+						<option value="NC">NC</option>
+						<option value="ND">ND</option>
+						<option value="OH">OH</option>
+						<option value="OK">OK</option>
+						<option value="OR">OR</option>
+						<option value="PA">PA</option>
+						<option value="RI">RI</option>
+						<option value="SC">SC</option>
+						<option value="SD">SD</option>
+						<option value="TN">TN</option>
+						<option value="TX">TX</option>
+						<option value="UT">UT</option>
+						<option value="VT">VT</option>
+						<option value="VA">VA</option>
+						<option value="WA">WA</option>
+						<option value="WV">WV</option>
+						<option value="WI">WI</option>
+						<option value="WY">WY</option>
+					</select>
+		<label for="Email">Email</label>
+		<input id="Email" type="text" name="user[email]">
+		<label for="Password">Password</label>
+		<input id="Password" type="password" name="user[password]">
+		<label for="passConfirm">Password Confirmation</label>
+		<input id="passConfirm" type="password" name="password_confirmation">
+		<input class="btn waves-effect waves-light right1" type="submit" value="Join" >
+	</form>
+</div>
+
+</div>

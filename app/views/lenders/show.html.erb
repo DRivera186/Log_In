@@ -1,0 +1,54 @@
+<h4 class="title2">Welcome <%= @lender.first_name %>!</h4>
+
+<div class="container3">
+<h5>Name: <%= @lender.first_name %> <%= @lender.last_name %></h5>
+<h5>Account Balance: $<%= @lender.money %></h5>
+</div>
+
+
+<div class="container2">
+
+	<h4 class="title2 center" >List of people who lend you money</h4>
+	<form action="/history/update" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<table class="responsive-table centered col s12 m2 teal lighten-5 table1">
+		<thead>
+		  <tr>
+		      <th data-field="Name">Name</th>
+		      <th data-field="date">Need Money For</th>
+		      <th data-field="date">Reason for Loan</th>
+		      <th data-field="date">Amount Needed</th>
+		      <th data-field="location">Amount Raised</th>
+		      <th data-field="location">Action</th>
+
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		  <% @user.each do |user| %>
+		    <td><%= user.first_name %> <%= user.last_name %></td>
+		    <td><%= user.purpose %></td>
+		    <td><%= user.description %></td>
+		    <td><%= user.money %></td>
+		    <td><%= user.money %></td>	
+		    <% end %>		    
+		    <td><select name="history[about]" id="amount" class="browser-default">
+				<option selected hidden>Amount</option>
+				<option value="25">$25</option>
+				<option value="50">$50</option>
+				<option value="100">$100</option>
+				<option value="200">$200</option>
+				<option value="500">$500</option>
+				<option value="1000">$1000</option>
+				<option value="2000">$2000</option>
+				<option value="3000">$3000</option>
+				<option value="4000">$4000</option>
+				<option value="5000">$5000</option>
+			</select>
+			<input type="submit" value="Lend" >
+			</td>
+		</tbody>
+	</table>
+	</form>
+</div>
+

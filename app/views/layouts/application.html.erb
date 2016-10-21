@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  class="cyan darken-4">
+<html  class="cyan darken-4 test1">
 <head>
  <title>LogIn</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -14,15 +14,17 @@
 	<ul id="dropdown1" class="dropdown-content">
 	<%if current_user%>
 	  <li><a href="/users/<%= current_user.id %>">Home</a></li>
-	  <li><a href="/users/<%= current_user.id %>/edit">Edit Profile</a></li>
 	<%end%>
-	  <li class="divider"></li>
-	  <li><a href="#!">three</a></li>
+	<%if current_lender %>
+	  <li><a href="/lenders/<%= current_lender.id %>">Home</a></li>
+	<%end%>
 	</ul>
 	<nav>
 	  <div class="nav-wrapper teal lighten-2 push1">
 	  	<% if current_user %>
 	    <a href="/users/<%= current_user.id %>" class="brand-logo logito">Home</a>
+	    <%elsif current_lender%>
+	    <a href="/lenders/<%= current_lender.id %>" class="brand-logo logito">Home</a>
 	    <%else%>
 	    <a href="/sessions/login" class="brand-logo logito">Logo</a>
 	    <%end%>
@@ -31,6 +33,12 @@
 	      	<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
 	      	<% if current_user %>
 	     	<li><form method="post" action="/sessions/logout">
+	       	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">	
+			<input type="hidden" name="_method" value="delete">
+			<button type="submit" class="btn waves-light button out" >Log out</button>
+	     	 </form></li>
+	       	<%elsif current_lender%>
+			<li><form method="post" action="/sessions/logout">
 	       	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">	
 			<input type="hidden" name="_method" value="delete">
 			<button type="submit" class="btn waves-light button out" >Log out</button>

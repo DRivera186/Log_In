@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
   root 'sessions#new'
+  get 'sessions/new' => 'sessions#new'
   get 'users/new' => 'users#new'
   get 'sessions/login' => 'sessions#new'
   post 'users/register' => 'users#create'
+  post 'lender/register' => 'lenders#create'
   get 'users/:id' => 'users#show'
+  get 'lenders/:id' => 'lenders#show'
   post 'sessions/signin' => 'sessions#login'
   get 'users/:id/edit' => 'users#edit'
   patch 'users/:id' => 'users#update'

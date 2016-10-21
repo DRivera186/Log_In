@@ -11,15 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020183446) do
+ActiveRecord::Schema.define(version: 20161021180615) do
+
+  create_table "histories", force: true do |t|
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.integer  "lender_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "histories", ["lender_id"], name: "index_histories_on_lender_id"
+  add_index "histories", ["user_id"], name: "index_histories_on_user_id"
+
+  create_table "lenders", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.integer  "money"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "city"
-    t.string   "state"
     t.string   "email"
     t.string   "password_digest"
+    t.integer  "money"
+    t.string   "purpose"
+    t.text     "description"
+    t.integer  "raised"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

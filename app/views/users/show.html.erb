@@ -1,3 +1,40 @@
+
+
 <h4 class="title2">Welcome <%= @user.first_name %>!</h4>
-<div class="container2"></div>
+
+<div class="container3">
+<h5>Name: <%= @user.first_name %> <%= @user.last_name %></h5>
+<h5>Amount Need: $<%= @user.money %></h5>
+<h5>Amount Raised: <%= @user.money %></h5>
+</div>
+
+
+
+<div class="container2">
+	<h4 class="title2 center" >List of people in need of help</h4>
+
+	<table class="responsive-table centered col s12 m2 teal lighten-5 table1">
+		<thead>
+		  <tr>
+		      <th data-field="Name">Name</th>
+		      <th data-field="date">Email</th>
+		      <th data-field="location">Amount</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+		    <td>Daniel</td>
+		    <td>Dan@Millionair.com</td>
+		    <td>$100</td>
+		  </tr>
+		  <tr>
+		    <td>Alan</td>
+		    <td>AlanThaMan@RicherThanYou.com</td>
+		    <td>$3.76</td>
+		  </tr>
+		</tbody>
+	</table>
+</div>
+
+
 

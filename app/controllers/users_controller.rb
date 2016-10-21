@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(current_user.id)
-    user.update(first_name: params[:first_name], last_name: params[:last_name], city: params[:city], state: params[:state], email: params[:email])
+    user.update(first_name: params[:first_name], last_name: params[:last_name], purpose: params[:purpose], money: params[:money], email: params[:email])
       if user.save 
         redirect_to "/users/#{user.id}"
       else
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
 
  private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :city, :state, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :money, :purpose, :description, :email, :password)
   end
 end

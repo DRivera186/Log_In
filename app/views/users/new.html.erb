@@ -1,11 +1,12 @@
 
-<div class="center1">
-<h3 class="center-align">Please Register</h3>
-	<% if flash[:errors] %>
+<div class="center1 grey lighten-4">
+<h3 class="center-align titles">Please Register</h3>
+	<span class="span1"><% if flash[:errors] %>
 		<% flash[:errors].each do |error| %>
 			<p class="error"> * <%=error%></p>
 		<% end %>
 	<% end %>
+	</span>
 <div>
 	<form action="/users/register" method="post">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -14,9 +15,9 @@
 		<label for="Last Name">Last Name</label>
 		<input id="last Name" type="text" name="user[last_name]">
 		<label for="City">City</label>
-		<input id="City" type="text" name="user[city]">
-		<select name="user[state]" id="states" class="browser-default">
-						<option selected hidden>Select State</option>
+		<input id="City" type="text" name="user[city]" class="select2">
+		<select name="user[state]" id="states" class="browser-default select1">
+						<option selected hidden>State</option>
 						<option value="AK">AK</option>
 						<option value="AL">AL</option>
 						<option value="AR">AR</option>

@@ -1,13 +1,12 @@
 <div class="section center3">
 </div>
-<main>
+<main >
   <center>
-    <img class="responsive-img" style="width: 250px;" src="" />
+    <!-- <img class="responsive-img" style="width: 250px;" src="" /> -->
     <div class="section"></div>
-    <h5 class="words1">Sign in</h5>
     <div class="container">
-      <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
-
+      <div class="z-depth-1 grey lighten-4 row signinn" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+          <h4 class="words1">Sign in</h4>
         <form class="col s12" method="post" action="/sessions/signin">
         	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <div class='row'>
@@ -45,7 +44,7 @@
         </form>
       </div>
     </div>
-    <a href="/users/new">Create account</a>
+    <h5><a href="/users/new" class="title2">Create Account</a></h5>
   </center>
 
   <div class="section"></div>

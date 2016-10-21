@@ -1,5 +1,5 @@
-<div class="center1">
-	<h3 class="center-align">Edit Profile</h3>
+<div class="center1 grey lighten-4">
+	<h3 class="center-align titles">Edit Profile</h3>
 	<% if flash[:errors] %>
 		<% flash[:errors].each do |error| %>
 			<p class="error"> * <%=error%></p>
@@ -16,8 +16,8 @@
 			<input id="last Name" type="text" name="last_name" value="<%= @user.last_name %>">
 			<label for="City">City</label>
 			<input id="City" type="text" name="city" value="<%= @user.city %>">
-			<select name="state" id="states" class="browser-default" value="<%= @user.state %>">
-							<option selected hidden>Select State</option>
+			<select name="state" id="states" class="browser-default select1" value="<%= @user.state %>">
+							<option selected hidden>State</option>
 							<option value="AK">AK</option>
 							<option value="AL">AL</option>
 							<option value="AR">AR</option>
@@ -71,7 +71,7 @@
 						</select>
 			<label for="Email">Email</label>
 			<input id="Email" type="text" name="email" value="<%= @user.email %>">
-			<input class="btn waves-effect waves-light right1" type="submit" value="Up Date Profile" >
+			<input class="btn waves-light right2" type="submit" value="Update Profile" >
 		</form>
 	</div>
 </div>

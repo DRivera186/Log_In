@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html  class="cyan darken-4">
 <head>
  <title>LogIn</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -8,7 +8,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 </head>
-<header class="fixed1">
+
+<body>
+	<header class="fixed1">
 	<ul id="dropdown1" class="dropdown-content">
 	<%if current_user%>
 	  <li><a href="/users/<%= current_user.id %>">Home</a></li>
@@ -20,7 +22,7 @@
 	<nav>
 	  <div class="nav-wrapper teal lighten-2 push1">
 	  	<% if current_user %>
-	    <a href="/users/<%= current_user.id %>" class="brand-logo logito">Logo</a>
+	    <a href="/users/<%= current_user.id %>" class="brand-logo logito">Home</a>
 	    <%else%>
 	    <a href="/sessions/login" class="brand-logo logito">Logo</a>
 	    <%end%>
@@ -31,16 +33,15 @@
 	     	<li><form method="post" action="/sessions/logout">
 	       	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">	
 			<input type="hidden" name="_method" value="delete">
-			<button type="submit" class="btn waves-effect waves-light button out" >Log out</button>
+			<button type="submit" class="btn waves-light button out" >Log out</button>
 	     	 </form></li>
 	       	<%else%>
-	       	<li><a class="btn waves-effect waves-light" href="/sessions/login">Log In</a></li>
+	       	<li><a class="btn waves-light" href="/sessions/login">Log In</a></li>
 	      <%end%>
 	    </ul>
 	  </div>
 	</nav>
-</header>
-<body>
+	</header>
 	<div class="container">
 	<%= yield %>
 	</div>

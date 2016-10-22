@@ -3,9 +3,6 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
   before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 
-  def index
-  end
-
   def new
   end
 
@@ -22,29 +19,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-  end
-
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  def update
-    user = User.find(current_user.id)
-    user.update(first_name: params[:first_name], last_name: params[:last_name], purpose: params[:purpose], money: params[:money], email: params[:email])
-      if user.save 
-        redirect_to "/users/#{user.id}"
-      else
-        flash[:errors] = user.errors.full_messages
-        redirect_to :back
-     end
-  end
-
-  def destroy
-
+    @lender = Lender.joins(:histories).all
   end
 
  private
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :money, :purpose, :description, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :money, :purpose, :raised, :description, :email, :password)
   end
 end

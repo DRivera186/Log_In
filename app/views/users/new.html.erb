@@ -24,21 +24,11 @@
 		<label for="description">Description:</label>
 <!-- 		<input id="description" type="text" name="user[purpose]"> -->
 		<textarea rows="6" cols="50" name="user[description]"></textarea>
-		<div class="input-field col s4">
-			<select name="user[money]" id="money" class="browser-default">
-				<option selected hidden>Amount Needed</option>
-				<option value="25">$25</option>
-				<option value="50">$50</option>
-				<option value="100">$100</option>
-				<option value="200">$200</option>
-				<option value="500">$500</option>
-				<option value="1000">$1000</option>
-				<option value="2000">$2000</option>
-				<option value="3000">$3000</option>
-				<option value="4000">$4000</option>
-				<option value="5000">$5000</option>
-			</select>
-	    </div>
+		<div class="input-field col s12">
+			<label for="MoneyNeeded">$ Amount Needed:</label>
+			<input id="MoneyNeeded" type="number" name="borrower[money]">
+			<input type="hidden" name="borrower[raised]" value="0">
+		</div>
 		<input class="btn waves-effect waves-light right1" type="submit" value="Join" >
 	</form>
 	<h5><a href="/sessions/login" class="title5">Already a member?</a></h5>
@@ -66,21 +56,10 @@
 		<input id="Password" type="password" name="lender[password]">
 		<label for="passConfirm">Password Confirmation</label>
 		<input id="passConfirm" type="password" name="password_confirmation">
-		<div class="input-field col s4">
-			<select name="lender[money]" id="money" class="browser-default">
-				<option selected hidden>Amount</option>
-				<option value="25">$25</option>
-				<option value="50">$50</option>
-				<option value="100">$100</option>
-				<option value="200">$200</option>
-				<option value="500">$500</option>
-				<option value="1000">$1000</option>
-				<option value="2000">$2000</option>
-				<option value="5000">$5000</option>
-				<option value="10000">$10000</option>
-				<option value="20000">$20000</option>
-				<option value="50000">$50000</option>
-			</select>
+		<div class="input-field col s12">
+			<label for="money">$ Money:</label>
+			<input id="money" type="number" name="lender[money]">
+		</div>
 	    </div>
 		<input class="btn waves-effect waves-light right1" type="submit" value="Join" >
 	</form>

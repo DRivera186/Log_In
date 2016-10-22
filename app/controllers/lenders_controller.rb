@@ -4,14 +4,6 @@ class LendersController < ApplicationController
   before_action :require_correct_lender, only: [:show, :edit, :update, :destroy]
 
 
-  def index
-
-  end
-
-  def new
-
-  end
-
   def create
     lender = Lender.new(lender_params)
       if lender.save 
@@ -24,16 +16,23 @@ class LendersController < ApplicationController
   end
 
   def show
-  	@user = User.all
-    @lender = Lender.find(current_lender.id)
-  end
-
-  def edit
-    @lender = lender.find(params[:id])
+  	@lender = Lender.find(params[:id])
+    @user = User.all
+    @lenders = User.joins(:histories).select("first_name", "last_name", "description", "purpose", "money", "raised", "amount").all
   end
 
   def update
-
+	  	lend = History.create(amount: params[:donate], lender_id: current_lender.id, user_id: params[user.id])
+		if current_lender.money < params[:donate].to_i
+			flash[:error] = "You do not have the sufficient funds, please choose a lower amount or add more money."
+		else
+			withdraw = current_lender.money - params[:donate].to_i
+			money = User.find(params[:id])
+			transfer = money.raised + params[:donate].to_i
+			money.update(raised: transfer)
+			current_lender.update(money: withdraw)
+		end
+	  	redirect_to :back
   end
 
   private

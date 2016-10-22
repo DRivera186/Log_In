@@ -28,12 +28,12 @@
 		    <td><%= user.first_name %> <%= user.last_name %></td>
 		    <td><%= user.purpose %></td>
 		    <td><%= user.description %></td>
-		    <td><%= user.money %></td>
-		    <td><%= user.raised %></td>		    
+		    <td>$ <%= user.money %></td>
+		    <td>$ <%= user.raised %></td>		    
 		    <td>
 				<div class="row">
 		    		<p class="col s1">$</p>
-			    	<form action="/lender/<%= user.id %>/trans" method="post">
+			    	<form action="/lender/<% user.id %>/trans" method="post">
 			    		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			    		<div class="col s4">
 							<input id="money" type="number" name="donate">

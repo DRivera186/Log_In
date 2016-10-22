@@ -23,7 +23,7 @@ class LendersController < ApplicationController
   end
 
   def update
-	  	lend = History.create(amount: params[:donate], lender_id: current_lender.id, user_id: params[user.id])
+	  	lend = History.create(amount: params[:donate], lender_id: current_lender.id, users_id: params[:id])
 		if current_lender.money < params[:donate].to_i
 			flash[:error] = "You do not have the sufficient funds, please choose a lower amount or add more money."
 		else

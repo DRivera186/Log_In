@@ -6,12 +6,10 @@ Rails.application.routes.draw do
   get 'sessions/login' => 'sessions#new'
   post 'users/register' => 'users#create'
   post 'lender/register' => 'lenders#create'
-  get 'users/:id' => 'users#show'
-  get 'lenders/:id' => 'lenders#show'
+  get "users/:id" => "users#show"
+  get "lenders/:id" => "lenders#show"
   post 'sessions/signin' => 'sessions#login'
-  post 'lender/:id/trans' => 'lenders#update'
-  get 'users/:id/edit' => 'users#edit'
-  patch 'users/:id' => 'users#update'
+  post "lender/:id/trans" => "lenders#update"
   delete 'sessions/logout' => 'sessions#destroy'
 
 

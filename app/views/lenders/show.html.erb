@@ -9,8 +9,7 @@
 <div class="container2">
 
 	<h4 class="title2 center" >List of people who lend you money</h4>
-	<form action="/history/update" method="post">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
 	<table class="responsive-table centered col s12 m2 teal lighten-5 table1">
 		<thead>
 		  <tr>
@@ -24,15 +23,17 @@
 		  </tr>
 		</thead>
 		<tbody>
+		<% @user.each do |user| %>
 		  <tr>
-		  <% @user.each do |user| %>
 		    <td><%= user.first_name %> <%= user.last_name %></td>
 		    <td><%= user.purpose %></td>
 		    <td><%= user.description %></td>
 		    <td><%= user.money %></td>
-		    <td><%= user.money %></td>	
-		    <% end %>		    
-		    <td><select name="history[about]" id="amount" class="browser-default">
+		    <td><%= user.money %></td>		    
+		    <td>
+				<form action="/history/update/<%= user.id %>" method="post">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		    <select name="history[about]" id="amount" class="browser-default">
 				<option selected hidden>Amount</option>
 				<option value="25">$25</option>
 				<option value="50">$50</option>
@@ -43,12 +44,13 @@
 				<option value="2000">$2000</option>
 				<option value="3000">$3000</option>
 				<option value="4000">$4000</option>
-				<option value="5000">$5000</option>
-			</select>
-			<input type="submit" value="Lend" >
+				<option value="5000">$5000</option></select>
+				<input type="submit" value="Lend" >
+				</form>
 			</td>
+		</tr>
+		<%end%>
 		</tbody>
 	</table>
-	</form>
 </div>
 

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show'
   get 'lenders/:id' => 'lenders#show'
   post 'sessions/signin' => 'sessions#login'
+  post '/history/update/:id' => 'histories#create'
   get 'users/:id/edit' => 'users#edit'
   patch 'users/:id' => 'users#update'
   delete 'sessions/logout' => 'sessions#destroy'

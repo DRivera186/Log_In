@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   #   redirect_to '/sessions/new' if session[:lender_id] == nil
   #   end
   # end
-  
+
   helper_method :current_user
   helper_method :current_lender
   # helper_method :require_current_user

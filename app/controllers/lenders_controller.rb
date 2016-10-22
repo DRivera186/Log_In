@@ -4,6 +4,7 @@ class LendersController < ApplicationController
   before_action :require_correct_lender, only: [:show, :edit, :update, :destroy]
 
 
+
   def create
     lender = Lender.new(lender_params)
       if lender.save 

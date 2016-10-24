@@ -22,18 +22,30 @@ class LendersController < ApplicationController
     @lenders = User.joins(:histories).select("first_name", "last_name", "description", "purpose", "money", "raised", "amount").all
   end
 
-  def update
-	  	lend = History.create(amount: params[:donate], lender_id: current_lender.id, users_id: params[:id])
-		if current_lender.money < params[:donate].to_i
-			flash[:error] = "You do not have the sufficient funds, please choose a lower amount or add more money."
-		else
-			withdraw = current_lender.money - params[:donate].to_i
-			money = User.find(params[:id])
-			transfer = money.raised + params[:donate].to_i
-			money.update(raised: transfer)
-			current_lender.update(money: withdraw)
-		end
-	  	redirect_to :back
+  def update 
+    history = History.new(amount: params[:donate].to_i, lender_id: current_lender.id, user_id: params[:id].to_i)
+    # lend = History.create(amount: params[:donate].to_i, lender_id: current_lender.id, user_id: params[:id].to_i)
+
+
+
+ 
+      if current_lender.money < params[:donate].to_i
+        flash[:error] = "You do not have the sufficient funds, please choose a lower amount or add more money."
+      else
+         if history.save
+            cashed = current_lender.money - params[:donate].to_i
+            fund = User.find(params[:id])
+            if !fund.raised
+              fund.raised = 0
+            end
+            pay = fund.raised + params[:donate].to_i
+            fund.update(raised: pay)
+            current_lender.update(money: cashed)
+          else
+            flash[:error] = history.errors.full_messages
+         end
+      end
+      redirect_to :back
   end
 
   private

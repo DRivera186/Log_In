@@ -21,17 +21,14 @@
 		      <th data-field="location">Amount</th>
 		  </tr>
 		</thead>
+				<% @lender.each do |lender| %>
 		<tbody>
 		  <tr>
-		    <td>Daniel</td>
-		    <td>Dan@Millionair.com</td>
-		    <td>$100</td>
+		    <td><%= lender.first_name %> <%= lender.last_name %></td>
+		    <td><%= lender.email %></td>
+		    <td>$<%= lender.money %></td>
 		  </tr>
-		  <tr>
-		    <td>Alan</td>
-		    <td>AlanTooRichToCare@RicherThanYou.com</td>
-		    <td>$3.76</td>
-		  </tr>
+		<% end %>
 		</tbody>
 	</table>
 </div>

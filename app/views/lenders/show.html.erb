@@ -33,8 +33,9 @@
 		    <td>
 				<div class="row">
 		    		<p class="col s1">$</p>
-			    	<form action="/lender/<% user.id %>/trans" method="post">
+			    	<form action="/lender/<%= user.id %>" method="post">
 			    		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			    		<input type='hidden' name='_method' value='patch'>
 			    		<div class="col s4">
 							<input id="money" type="number" name="donate">
 						</div>

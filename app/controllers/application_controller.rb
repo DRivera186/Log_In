@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_correct_lender
-    lender = Lender.find(params[:id])
+    lender = Lender.find(current_lender.id)
     redirect_to "/lenders/#{current_lender.id}" if current_lender != lender
   end
 
